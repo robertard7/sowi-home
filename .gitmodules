@@ -1,0 +1,4 @@
+[submodule "vendor/bootshim"]
+	path = vendor/bootshim
+	url = https://github.com/robertard7/sowi-boot.git
+	branch = main
