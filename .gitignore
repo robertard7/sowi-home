@@ -1,0 +1,9 @@
+/ext/
+/vendor/
+/_build/
+/out/
+/*.iso
+*.img
+*.zip
+*.xz
+*.tar.*
