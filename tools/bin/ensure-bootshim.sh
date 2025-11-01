@@ -19,8 +19,9 @@ echo "[build] BootShim.efi missing — building submodule"
   else
     echo "[info] vendor tar missing — fetching edk2 from codeload"
     curl -fsSL https://codeload.github.com/tianocore/edk2/tar.gz/refs/heads/master -o /tmp/edk2.tgz
-    tar -xzf /tmp/edk2.tgz -C /tmp
-    mv /tmp/edk2-* "$EDK"
+    tar -xzf /tmp/edk2.tgz -C "" --strip-components=1
+  [ -f "$EDK/edksetup.sh" ] || { echo "[fatal] edksetup.sh missing"; exit 2; }
+  [ -d "$EDK/BaseTools" ]   || { echo "[fatal] BaseTools missing"; exit 2; }
   fi
   make -C "$EDK/BaseTools" -j1
   PYTHON_COMMAND=python3 PACKAGES_PATH="$PWD:$EDK" bash -lc \
